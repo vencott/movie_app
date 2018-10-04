@@ -11,13 +11,13 @@
     box-shadow: 0 8px 38px rgba(133, 133, 133, 0.3), 0 5px 12px rgba(133, 133, 133,0.22);
 }
 
-.Movie_Column{
+.Movie__Column{
     width:30%;
     box-sizing:border-box;
     text-overflow: ellipsis;
 }
 
-.Movie_Column:last-child{
+.Movie__Column:last-child{
     padding:20px 0;
     width:60%;
 }
@@ -27,24 +27,24 @@
     font-weight: 600;
 }
 
-.Movie .Movie_Genres{
+.Movie .Movie__Genres{
     display: flex;
     flex-wrap:wrap;
     margin-bottom:20px;
 }
 
-.Movie_Genres .Movie_Genre{
+.Movie__Genres .Movie__Genre{
     margin-right:10px;
     color:#B4B5BD;
 }
 
-.Movie .Movie_Synopsis {
+.Movie .Movie__Synopsis {
     text-overflow: ellipsis;
     color:#B4B5BD;
     overflow: hidden;
 }
 
-.Movie .Movie_Poster{
+.Movie .Movie__Poster{
     max-width: 100%;
     position: relative;
     top:-20px;
@@ -62,12 +62,12 @@
         width:100%;
         flex-direction: column;
     }
-    .Movie_Poster{
+    .Movie__Poster{
         top:0;
         left:0;
         width:100%;
     }
-    .Movie_Column{
+    .Movie__Column{
         width:100%!important;
     }
 }
