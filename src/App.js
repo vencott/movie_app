@@ -6,32 +6,7 @@ class App extends Component {
     state = {};
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-                movies: [
-                    {
-                        title: "Matrix",
-                        poster: "https://is1-ssl.mzstatic.com/image/thumb/Video115/v4/a2/ff/49/a2ff498c-2567-39f3-578f-4f023d414fbd/pr_source.lsr/268x0w.png"
-                    },
-                    {
-                        title: "Full Metal Jacket",
-                        poster: "https://upload.wikimedia.org/wikipedia/en/thumb/9/99/Full_Metal_Jacket_poster.jpg/220px-Full_Metal_Jacket_poster.jpg"
-                    },
-                    {
-                        title: "Old boy",
-                        poster: "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Oldboykoreanposter.jpg/220px-Oldboykoreanposter.jpg"
-                    },
-                    {
-                        title: "Star wars",
-                        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFJZ4cb20ESPz7NdrGsLKZH628KITeoz97CfutioMW56Qj2vMq"
-                    },
-                    {
-                        title: "Transpotting",
-                        poster: "https://upload.wikimedia.org/wikipedia/en/7/71/Trainspotting_ver2.jpg"
-                    }
-                ]
-            });
-        }, 5000);
+        console.log(fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating'));
     }
 
     _renderMovies = () => {
