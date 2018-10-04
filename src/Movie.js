@@ -17,7 +17,7 @@ function Movie({title, poster, genres, synopsis}) {
                 <div className="Movie__Synopsis">
                     <LinesEllipsis
                         text={synopsis}
-                        maxLine='4'
+                        maxLine='3'
                         ellipsis='...'
                         trimRight
                         basedOn='letters'
