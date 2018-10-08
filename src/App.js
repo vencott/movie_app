@@ -43,7 +43,7 @@ class App extends Component {
     };
 
     _callApi = () => {
-        const url = "https://yts.am/api/v2/list_movies.json?limit=20&page=" + this.pageNo + "&sort_by=download_count";
+        const url = "https://yts.am/api/v2/list_movies.json?limit=10&page=" + this.pageNo + "&sort_by=download_count";
         return fetch(url)
             .then(response => response.json())
             .then(json => json.data.movies)
@@ -51,9 +51,10 @@ class App extends Component {
     };
 
     _requestNextPage = () => {
-        this.setState({
-            btnEnabled: false
-        });
+        this.setState(prevState => ({
+            btnEnabled: false,
+            movies: prevState.movies
+        }));
         this.pageNo++;
         this._getMovies();
     };
