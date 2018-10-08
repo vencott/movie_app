@@ -3,7 +3,9 @@ import "./App.css";
 import Movie from "./Movie";
 
 class App extends Component {
-    state = {};
+    state = {
+        btnEnabled: true
+    };
     pageNo = 1;
 
     componentDidMount() {
@@ -24,9 +26,18 @@ class App extends Component {
         });
     };
 
+    _renderButton = (isLoading) => {
+        return isLoading === undefined ? null : <div className="Button__Container">
+            <button className='Button_More' disabled={!this.state.btnEnabled} onClick={this._requestNextPage}>
+                {this.state.btnEnabled ? "View more" : "Loading"}
+            </button>
+        </div>
+    };
+
     _getMovies = async () => {
         const movies = await this._callApi();
         this.setState({
+            btnEnabled: true,
             movies: this.state.movies ? this.state.movies.concat(movies) : movies
         });
     };
@@ -40,6 +51,9 @@ class App extends Component {
     };
 
     _requestNextPage = () => {
+        this.setState({
+            btnEnabled: false
+        });
         this.pageNo++;
         this._getMovies();
     };
@@ -49,7 +63,7 @@ class App extends Component {
         return (
             <div className={movies ? "App" : "App--loading"}>
                 {movies ? this._renderMovies() : "Loading"}
-                <button text="hello" onClick={this._requestNextPage}/>
+                {this._renderButton(movies)}
             </div>
         );
     }
