@@ -4,13 +4,14 @@ import Movie from "./Movie";
 
 class App extends Component {
     state = {};
+    pageNo = 1;
 
     componentDidMount() {
         this._getMovies();
     }
 
     _renderMovies = () => {
-        const movies = this.state.movies.map(movie => {
+        return this.state.movies.map(movie => {
             return (
                 <Movie
                     title={movie.title_english}
@@ -21,23 +22,26 @@ class App extends Component {
                 />
             );
         });
-        return movies;
     };
 
     _getMovies = async () => {
         const movies = await this._callApi();
         this.setState({
-            movies
+            movies: this.state.movies ? this.state.movies.concat(movies) : movies
         });
     };
 
     _callApi = () => {
-        return fetch(
-            "https://yts.am/api/v2/list_movies.json?sort_by=download_count"
-        )
-            .then(potato => potato.json())
+        const url = "https://yts.am/api/v2/list_movies.json?limit=20&page=" + this.pageNo + "&sort_by=download_count";
+        return fetch(url)
+            .then(response => response.json())
             .then(json => json.data.movies)
             .catch(err => console.log(err));
+    };
+
+    _requestNextPage = () => {
+        this.pageNo++;
+        this._getMovies();
     };
 
     render() {
@@ -45,6 +49,7 @@ class App extends Component {
         return (
             <div className={movies ? "App" : "App--loading"}>
                 {movies ? this._renderMovies() : "Loading"}
+                <button text="hello" onClick={this._requestNextPage}/>
             </div>
         );
     }
