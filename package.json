@@ -17,7 +17,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "http://vencott.github.io/react_movie_app/",
+  "homepage": "http://vencott.github.io/movie_app/",
   "devDependencies": {
     "gh-pages": "^2.0.0"
   }
