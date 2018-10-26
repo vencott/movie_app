@@ -1,4 +1,4 @@
 # movie_app
-Learning React with Nomad Coders
+Sample web-app using React with Nomad Coders
 
 https://academy.nomadcoders.co/p/reactjs-fundamentals
